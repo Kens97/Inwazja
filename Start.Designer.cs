@@ -1,6 +1,6 @@
 ﻿namespace Inwazja
 {
-    partial class Form1
+    partial class Start
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
