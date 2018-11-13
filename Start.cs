@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Inwazja.Figure;
 
 namespace Inwazja
+
 {
     public partial class Start : Form
     {
+       // private Figure figura = new Figure();
 
         private const int tileWidth = 20;
         private const int tileHeight = 20;
@@ -29,6 +32,9 @@ namespace Inwazja
 
         private Point tileLocation = new Point(tileSize.Width/2, tileSize.Height/2);
         private Point FigureHolderLocation = new Point(MarginWidth*2 + tileWidth*size+ FigureHolderWidth/2, MarginHeigt + FigureHolderHeight/2);
+
+        static List<Figure> Figures = new List<Figure>();
+
         public Start()
         {
             InitializeComponent();
