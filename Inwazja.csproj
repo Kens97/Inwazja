@@ -46,10 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Figure\Figure.cs" />
-    <Compile Include="Figure\FigureDefinition.cs" />
-    <Compile Include="Figure\GeneratePieces.cs" />
-    <Compile Include="Figure\One\One.cs" />
+    <Compile Include="Figure.cs" />
     <Compile Include="Image\ImagePath.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>

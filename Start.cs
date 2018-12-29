@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Inwazja.Figure;
 
 namespace Inwazja
 
@@ -22,8 +21,8 @@ namespace Inwazja
         private const int MarginWidth = 40;
         private const int MarginHeigt = 40;
 
-        private const int FigureHolderWidth = 200 ;
-        private const int FigureHolderHeight =200;
+        private const int FigureHolderWidth = 22*tileWidth ;
+        private const int FigureHolderHeight =13*tileHeight;
 
         public const int size= 20;
         private static readonly Size tileSize = new Size(tileWidth, tileHeight);
@@ -32,14 +31,17 @@ namespace Inwazja
 
         private Point tileLocation = new Point(tileSize.Width/2, tileSize.Height/2);
         private Point FigureHolderLocation = new Point(MarginWidth*2 + tileWidth*size+ FigureHolderWidth/2, MarginHeigt + FigureHolderHeight/2);
+        public PictureBox[][] Board;
+        public PictureBox[][] FigureHolder;
 
-        static List<Figure> Figures = new List<Figure>();
+        //static List<Figure> Figures = new List<Figure>();
 
         public Start()
         {
             InitializeComponent();
             DrawBoard();
             DrawFigureHolder();
+            DrawCentralTile();
         }
 
         private void DrawBoard()
@@ -63,6 +65,7 @@ namespace Inwazja
                         Location = new Point(MarginWidth + i*tileWidth, MarginHeigt + j*tileHeight),
                         BorderStyle = BorderStyle.Fixed3D,
                         BackColor=Color.Black,
+                        SizeMode=PictureBoxSizeMode.StretchImage
                     };
                     Controls.Add(Board[i][j]);
                     
@@ -72,13 +75,33 @@ namespace Inwazja
 
         private void DrawFigureHolder ()
         {
-            PictureBox FigureHolder = new PictureBox
+            PictureBox[][] FigureHolder = new PictureBox[22][];
+            for (int i = 0; i < 22; i++)
             {
-                Size = FigureHolderSize,
-                Location = FigureHolderLocation,
-                BorderStyle = BorderStyle.Fixed3D,
-            };
-            Controls.Add(FigureHolder);
+                FigureHolder[i] = new PictureBox[13];
+            }
+
+
+            for (int i = 0; i < 22; i++)
+            {
+                for (int j = 0; j < 13; j++)
+                {
+                    FigureHolder[i][j] = new PictureBox
+                    {
+                        Size = tileSize,
+                        Location = new Point(MarginWidth*2 + 20*tileWidth + i * tileWidth, MarginHeigt*2 + tileHeight + j * tileHeight),
+                        BorderStyle = BorderStyle.Fixed3D,
+                        BackColor = Color.Green
+                    };
+                    Controls.Add(FigureHolder[i][j]);
+
+                }
+            }
+        }
+
+        private void DrawCentralTile()
+        {
+            Board[1][1].Image = Image.FromFile(ImagePath.YellowImagePath);
         }
     }
 }
